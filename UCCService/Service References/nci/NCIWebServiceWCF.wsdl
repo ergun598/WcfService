@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:tns="http://nci.connector.ess.azry.com/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="NCIWebServiceWCF" targetNamespace="http://nci.connector.ess.azry.com/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <xs:schema elementFormDefault="qualified" targetNamespace="http://nci.connector.ess.azry.com/" version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:element name="bulkExecute" type="tns:bulkExecute" />
+      <xs:element name="bulkExecuteResponse" type="tns:bulkExecuteResponse" />
+      <xs:element name="execute" type="tns:execute" />
+      <xs:element name="executeResponse" type="tns:executeResponse" />
+      <xs:complexType name="execute">
+        <xs:sequence>
+          <xs:element minOccurs="0" form="unqualified" name="serviceId" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="unbounded" form="unqualified" name="parameter" type="tns:Parameter" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="Parameter">
+        <xs:sequence>
+          <xs:element name="key" type="xs:string" />
+          <xs:element name="value" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="executeResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" form="unqualified" name="outParameter" type="tns:Parameter" />
+          <xs:element minOccurs="0" maxOccurs="unbounded" form="unqualified" name="faultEntry" type="tns:FaultEntry" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="FaultEntry">
+        <xs:sequence>
+          <xs:element name="errorKey" type="xs:string" />
+          <xs:element minOccurs="0" name="errorParameters" type="tns:ErrorParameters" />
+          <xs:element minOccurs="0" name="invalidParameter" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="ErrorParameters">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="parameter" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="bulkExecute">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" form="unqualified" name="executeRequest" type="tns:ExecuteRequest" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="ExecuteRequest">
+        <xs:sequence>
+          <xs:element form="unqualified" name="serviceId" type="xs:string" />
+          <xs:element maxOccurs="unbounded" form="unqualified" name="parameter" type="tns:Parameter" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="bulkExecuteResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" form="unqualified" name="ExecuteResult" type="tns:ExecuteResult" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="ExecuteResult">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" form="unqualified" name="parameter" nillable="true" type="tns:Parameter" />
+          <xs:element minOccurs="0" maxOccurs="unbounded" form="unqualified" name="faultEntries" nillable="true" type="tns:FaultEntry" />
+        </xs:sequence>
+      </xs:complexType>
+    </xs:schema>
+  </types>
+  <message name="NCIServiceWCF_bulkExecuteResponse">
+    <part name="bulkExecuteResponse" element="tns:bulkExecuteResponse" />
+  </message>
+  <message name="NCIServiceWCF_executeResponse">
+    <part name="executeResponse" element="tns:executeResponse" />
+  </message>
+  <message name="NCIServiceWCF_execute">
+    <part name="execute" element="tns:execute" />
+  </message>
+  <message name="NCIServiceWCF_bulkExecute">
+    <part name="bulkExecute" element="tns:bulkExecute" />
+  </message>
+  <portType name="NCIServiceWCF">
+    <operation name="bulkExecute" parameterOrder="bulkExecute">
+      <input message="tns:NCIServiceWCF_bulkExecute" />
+      <output message="tns:NCIServiceWCF_bulkExecuteResponse" />
+    </operation>
+    <operation name="execute" parameterOrder="execute">
+      <input message="tns:NCIServiceWCF_execute" />
+      <output message="tns:NCIServiceWCF_executeResponse" />
+    </operation>
+  </portType>
+  <binding name="NCIServiceWCFBinding" type="tns:NCIServiceWCF">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <operation name="bulkExecute">
+      <soap:operation soapAction="urn:bulkExecuteWCF" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="execute">
+      <soap:operation soapAction="urn:executeWCF" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <service name="NCIWebServiceWCF">
+    <port name="NCIServiceWCFBeanPort" binding="tns:NCIServiceWCFBinding">
+      <soap:address location="http://92.241.79.133/nci/NCIServiceWCFBean" />
+    </port>
+  </service>
+</definitions>

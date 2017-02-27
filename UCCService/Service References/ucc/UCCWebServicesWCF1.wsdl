@@ -1,0 +1,349 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://ucc.ess.azry.com/" name="UCCWebServicesWCF" targetNamespace="http://ucc.ess.azry.com/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <xs:schema elementFormDefault="qualified" targetNamespace="http://ucc.ess.azry.com/" version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:element name="UCCFault" type="tns:UCCFault" />
+      <xs:element name="getPayment" nillable="true">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element form="unqualified" name="paymentId" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="getPaymentResponse" type="tns:getPaymentResponse" />
+      <xs:element name="getPayments" nillable="true">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element form="unqualified" name="businessDayId" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="getPaymentsResponse" type="tns:getPaymentsResponse" />
+      <xs:element name="getServiceProviders" type="tns:getServiceProviders" />
+      <xs:element name="getServiceProvidersResponse" type="tns:getServiceProvidersResponse" />
+      <xs:element name="reconcile" nillable="true">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element form="unqualified" name="businessDayId" type="xs:string" />
+            <xs:element form="unqualified" name="paymentsAmount" type="xs:float" />
+            <xs:element form="unqualified" name="paymentsNumber" type="xs:int" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="reconcileResponse" type="tns:reconcileResponse" />
+      <xs:element name="registerClearingOrder" nillable="true">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element form="unqualified" name="clearingOrder" type="tns:ClearingOrder" />
+            <xs:element maxOccurs="unbounded" form="unqualified" name="paymentId" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="registerClearingOrderResponse" type="tns:registerClearingOrderResponse" />
+      <xs:complexType name="getServiceProviders">
+        <xs:sequence />
+      </xs:complexType>
+      <xs:complexType name="getServiceProvidersResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" form="unqualified" name="serviceProviders" type="tns:ServiceProvider" />
+          <xs:element minOccurs="0" form="unqualified" name="uccError" type="tns:UCCFault" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="ServiceProvider">
+        <xs:sequence>
+          <xs:element name="code" type="xs:string" />
+          <xs:element name="name" type="xs:string" />
+          <xs:element name="shortName" type="xs:string" />
+          <xs:element minOccurs="0" name="contactPerson" type="xs:string" />
+          <xs:element minOccurs="0" name="phone" type="xs:string" />
+          <xs:element minOccurs="0" name="fax" type="xs:string" />
+          <xs:element minOccurs="0" name="email" type="xs:string" />
+          <xs:element minOccurs="0" name="address" type="xs:string" />
+          <xs:element name="registrationCode" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="ServiceProviderAccount" type="tns:ServiceProviderAccount" />
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="Service" type="tns:Service" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="ServiceProviderAccount">
+        <xs:sequence>
+          <xs:element name="bankCode" type="xs:string" />
+          <xs:element name="bankAccountNumber" type="xs:string" />
+          <xs:element name="bankAccountName" type="xs:string" />
+          <xs:element name="active" type="xs:boolean" />
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="TreasuryCodes" type="tns:TreasuryCode" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="TreasuryCode">
+        <xs:sequence>
+          <xs:element name="code" type="xs:string" />
+          <xs:element minOccurs="0" name="description" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="Service">
+        <xs:sequence>
+          <xs:element name="serviceCode" type="xs:string" />
+          <xs:element minOccurs="0" name="description" type="xs:string" />
+          <xs:element minOccurs="0" name="verifyServiceCode" type="xs:string" />
+          <xs:element minOccurs="0" name="debtServiceCode" type="xs:string" />
+          <xs:element name="payServiceCode" type="xs:string" />
+          <xs:element minOccurs="0" name="cancelServiceCode" type="xs:string" />
+          <xs:element name="abonentDetailsPattern" type="xs:string" />
+          <xs:element name="active" type="xs:boolean" />
+          <xs:element name="allAgentAccounts" type="xs:boolean" />
+          <xs:element minOccurs="0" name="serviceIcon" type="xs:base64Binary" />
+          <xs:element name="oneTimePayment" type="xs:boolean" />
+          <xs:element name="immediateTransaction" type="xs:boolean" />
+          <xs:element name="additionalInfo" type="xs:boolean" />
+          <xs:element name="transferCommissions" type="xs:boolean" />
+          <xs:element name="phoneAbonentCode" type="xs:boolean" />
+          <xs:element maxOccurs="unbounded" name="serviceCommissions" type="tns:ServiceCommission" />
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="serviceAccounts" nillable="true" type="tns:ServiceProviderAccount" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="ServiceCommission">
+        <xs:sequence>
+          <xs:element name="minAmount" type="xs:float" />
+          <xs:element name="maxAmount" type="xs:float" />
+          <xs:element name="currency" type="xs:string" />
+          <xs:element minOccurs="0" name="serviceConsumerCode" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="paymentChannel" type="xs:string" />
+          <xs:element name="commissionFixed" type="xs:float" />
+          <xs:element name="commissionPercent" type="xs:float" />
+          <xs:element name="minCommission" type="xs:float" />
+          <xs:element name="maxCommission" type="xs:float" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="UCCFault">
+        <xs:sequence>
+          <xs:element name="errorCode" type="tns:UCCError" />
+          <xs:element minOccurs="0" name="errorMessage" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="reconcileResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" form="unqualified" name="reconcilationResult" type="tns:ReconcilationResult" />
+          <xs:element minOccurs="0" form="unqualified" name="uccError" type="tns:UCCFault" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="ReconcilationResult">
+        <xs:sequence>
+          <xs:element name="businessDayStatus" type="tns:BusinessDayStatus" />
+          <xs:element name="expectedPaymentsAmount" type="xs:float" />
+          <xs:element name="expectedPaymentsNumber" type="xs:int" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="ClearingOrder">
+        <xs:sequence>
+          <xs:element name="bankOrderDocumentNumber" type="xs:string" />
+          <xs:element name="serviceProviderCode" type="xs:string" />
+          <xs:element name="amount" type="xs:float" />
+          <xs:element name="currency" type="xs:string" />
+          <xs:element minOccurs="0" name="paymentPurpose" type="xs:string" />
+          <xs:element minOccurs="0" name="additionalInfo" type="xs:string" />
+          <xs:element minOccurs="0" name="payerName" type="xs:string" />
+          <xs:element minOccurs="0" name="payerIdentificationNumber" type="xs:string" />
+          <xs:element minOccurs="0" name="treasuryCode" type="xs:string" />
+          <xs:element name="clearingTime" type="xs:dateTime" />
+          <xs:element name="receiverBankCode" type="xs:string" />
+          <xs:element name="receiverBankAccount" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="registerClearingOrderResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" form="unqualified" name="uccError" type="tns:UCCFault" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="getPaymentsResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" form="unqualified" name="payments" type="tns:Payment" />
+          <xs:element minOccurs="0" form="unqualified" name="uccError" type="tns:UCCFault" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="Payment">
+        <xs:sequence>
+          <xs:element name="paymentId" type="xs:string" />
+          <xs:element name="agentPaymentId" type="xs:string" />
+          <xs:element name="serviceCode" type="xs:string" />
+          <xs:element name="serviceProviderCode" type="xs:string" />
+          <xs:element name="businessDayId" type="xs:string" />
+          <xs:element name="amount" type="xs:float" />
+          <xs:element name="commission" type="xs:float" />
+          <xs:element name="currency" type="xs:string" />
+          <xs:element name="abonentCode" type="xs:string" />
+          <xs:element name="paymentTime" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="paymentChannel" type="xs:string" />
+          <xs:element minOccurs="0" name="paymentPoint" type="xs:string" />
+          <xs:element minOccurs="0" name="paymentPurpose" type="xs:string" />
+          <xs:element minOccurs="0" name="additionalInfo" type="xs:string" />
+          <xs:element minOccurs="0" name="payerName" type="xs:string" />
+          <xs:element minOccurs="0" name="payerIdentificationNumber" type="xs:string" />
+          <xs:element minOccurs="0" name="treasuryCode" type="xs:string" />
+          <xs:element name="status" type="tns:paymentStatus" />
+          <xs:element minOccurs="0" name="clearingOrderDocumentNumber" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="srcBankCode" type="xs:string" />
+          <xs:element minOccurs="0" name="srcBankAccountNumber" type="xs:string" />
+          <xs:element minOccurs="0" name="destBankCode" type="xs:string" />
+          <xs:element minOccurs="0" name="destBankAccountNumber" type="xs:string" />
+          <xs:element minOccurs="0" name="bankOrderDocumentNumber" type="xs:string" />
+          <xs:element minOccurs="0" name="errorCode" type="xs:string" />
+          <xs:element minOccurs="0" name="errorMessage" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="getPaymentResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" form="unqualified" name="payment" type="tns:Payment" />
+          <xs:element minOccurs="0" form="unqualified" name="uccError" type="tns:UCCFault" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:simpleType name="UCCError">
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="SYSTEM_INTERNAL_ERROR" />
+          <xs:enumeration value="UNKNOWN_BUSINESS_DAY" />
+          <xs:enumeration value="UNKNOWN_SERVICE_PROVIDER" />
+          <xs:enumeration value="UNKNOWN_PAYMENT" />
+          <xs:enumeration value="UNKNOWN_SERVICE" />
+          <xs:enumeration value="ILLEGAL_CLEARING_PAYMENT" />
+          <xs:enumeration value="ILLEGAL_CLEARING_CURRENCY" />
+          <xs:enumeration value="ILLEGAL_CLEARING_SP_CODE" />
+          <xs:enumeration value="WRONG_CLEARING_AMOUNT" />
+          <xs:enumeration value="NON_UNIQUE_BANK_ORDER_NUMBER" />
+          <xs:enumeration value="NON_UNIQUE_AGENT_PAYMENT_ID" />
+          <xs:enumeration value="NON_UNIQUE_BUSINESS_DAY_ID" />
+          <xs:enumeration value="COMMISSION_CALCULATION_ERROR" />
+          <xs:enumeration value="WRONG_CANCEL_AMOUNT" />
+          <xs:enumeration value="WRONG_CANCEL_CURRENCY" />
+          <xs:enumeration value="PAYMENT_CANCELLING" />
+          <xs:enumeration value="PAYMENT_ALREADY_CANCELED" />
+          <xs:enumeration value="PAYMENT_FAILED" />
+          <xs:enumeration value="PAYMENT_BUSINESS_DAY_CLOSED" />
+          <xs:enumeration value="RECONCILIATION_ALREADY_PERFORMED" />
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:simpleType name="BusinessDayStatus">
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="OPENED" />
+          <xs:enumeration value="CLOSED_NORMAL" />
+          <xs:enumeration value="CLOSED_IRREGULAR" />
+          <xs:enumeration value="CLOSED_AFTER_REVISION" />
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:simpleType name="paymentStatus">
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="PERFORMING" />
+          <xs:enumeration value="ENQUEUED" />
+          <xs:enumeration value="PENDING" />
+          <xs:enumeration value="PERFORMED" />
+          <xs:enumeration value="REJECTED" />
+          <xs:enumeration value="FAILED" />
+          <xs:enumeration value="CANCELLING" />
+          <xs:enumeration value="CANCELED" />
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:schema>
+  </types>
+  <message name="UCCServicesWCF_getPaymentsResponse">
+    <part name="getPaymentsResponse" element="tns:getPaymentsResponse" />
+  </message>
+  <message name="UCCServicesWCF_getPaymentResponse">
+    <part name="getPaymentResponse" element="tns:getPaymentResponse" />
+  </message>
+  <message name="UCCServicesWCF_reconcileResponse">
+    <part name="reconcileResponse" element="tns:reconcileResponse" />
+  </message>
+  <message name="UCCServicesWCF_getPayment">
+    <part name="getPayment" element="tns:getPayment" />
+  </message>
+  <message name="UCCServicesWCF_getPayments">
+    <part name="getPayments" element="tns:getPayments" />
+  </message>
+  <message name="UCCServicesWCF_getServiceProvidersResponse">
+    <part name="getServiceProvidersResponse" element="tns:getServiceProvidersResponse" />
+  </message>
+  <message name="UCCServicesWCF_registerClearingOrderResponse">
+    <part name="registerClearingOrderResponse" element="tns:registerClearingOrderResponse" />
+  </message>
+  <message name="UCCServicesWCF_reconcile">
+    <part name="reconcile" element="tns:reconcile" />
+  </message>
+  <message name="UCCServicesWCF_getServiceProviders">
+    <part name="getServiceProviders" element="tns:getServiceProviders" />
+  </message>
+  <message name="UCCServicesWCF_registerClearingOrder">
+    <part name="registerClearingOrder" element="tns:registerClearingOrder" />
+  </message>
+  <portType name="UCCServicesWCF">
+    <operation name="getPayment" parameterOrder="getPayment">
+      <input message="tns:UCCServicesWCF_getPayment" />
+      <output message="tns:UCCServicesWCF_getPaymentResponse" />
+    </operation>
+    <operation name="getPayments" parameterOrder="getPayments">
+      <input message="tns:UCCServicesWCF_getPayments" />
+      <output message="tns:UCCServicesWCF_getPaymentsResponse" />
+    </operation>
+    <operation name="getServiceProviders" parameterOrder="getServiceProviders">
+      <input message="tns:UCCServicesWCF_getServiceProviders" />
+      <output message="tns:UCCServicesWCF_getServiceProvidersResponse" />
+    </operation>
+    <operation name="reconcile" parameterOrder="reconcile">
+      <input message="tns:UCCServicesWCF_reconcile" />
+      <output message="tns:UCCServicesWCF_reconcileResponse" />
+    </operation>
+    <operation name="registerClearingOrder" parameterOrder="registerClearingOrder">
+      <input message="tns:UCCServicesWCF_registerClearingOrder" />
+      <output message="tns:UCCServicesWCF_registerClearingOrderResponse" />
+    </operation>
+  </portType>
+  <binding name="UCCServicesWCFBinding" type="tns:UCCServicesWCF">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <operation name="getPayment">
+      <soap:operation soapAction="urn:getPaymentWCF" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="getPayments">
+      <soap:operation soapAction="urn:getPaymentsWCF" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="getServiceProviders">
+      <soap:operation soapAction="urn:getServiceProviderWCF" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="reconcile">
+      <soap:operation soapAction="urn:reconcileWCF" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="registerClearingOrder">
+      <soap:operation soapAction="urn:registerClearingOrderWCF" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <service name="UCCWebServicesWCF">
+    <port name="UCCServicesWCFBeanPort" binding="tns:UCCServicesWCFBinding">
+      <soap:address location="http://92.241.79.134/ucc-services/UCCServicesWCFBean" />
+    </port>
+  </service>
+</definitions>

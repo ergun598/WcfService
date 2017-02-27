@@ -1,0 +1,5 @@
+C:\ISBANK\is97036\Documents\Visual Studio 2012\Projects\UCCService\UCCService\bin\UCCService.dll
+C:\ISBANK\is97036\Documents\Visual Studio 2012\Projects\UCCService\UCCService\bin\UCCService.pdb
+C:\ISBANK\is97036\Documents\Visual Studio 2012\Projects\UCCService\UCCService\obj\Debug\UCCService.dll
+C:\ISBANK\is97036\Documents\Visual Studio 2012\Projects\UCCService\UCCService\obj\Debug\UCCService.pdb
+C:\ISBANK\is97036\documents\visual studio 2012\Projects\UCCService\UCCService\obj\Debug\UCCService.csprojResolveAssemblyReference.cache
