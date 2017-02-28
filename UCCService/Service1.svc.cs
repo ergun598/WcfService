@@ -215,15 +215,19 @@ namespace UCCService
                            rtn.getServiceProvidersResponse1[count].ServiceProviderAccount[countSer].bankAccountNumber = servs.bankAccountNumber;
                            rtn.getServiceProvidersResponse1[count].ServiceProviderAccount[countSer].bankCode = servs.bankCode;
                            int countSercomTrea = 0;
-                           rtn.getServiceProvidersResponse1[count].ServiceProviderAccount[countSer].TreasuryCodes = new TreasuryCode[servs.TreasuryCodes.Length];
-                           foreach (WinFormsTest.ucc.TreasuryCode servsComTreas in servs.TreasuryCodes)
+                           if (servs.TreasuryCodes != null)
                            {
-                               rtn.getServiceProvidersResponse1[count].ServiceProviderAccount[countSer].TreasuryCodes[countSercomTrea] = new TreasuryCode();
-                               rtn.getServiceProvidersResponse1[count].ServiceProviderAccount[countSer].TreasuryCodes[countSercomTrea].code = servsComTreas.code;
-                               rtn.getServiceProvidersResponse1[count].ServiceProviderAccount[countSer].TreasuryCodes[countSercomTrea].description = servsComTreas.description;
-                               countSercomTrea++;
-                           }
+                               rtn.getServiceProvidersResponse1[count].ServiceProviderAccount[countSer].TreasuryCodes = new TreasuryCode[servs.TreasuryCodes.Length];
+                               foreach (WinFormsTest.ucc.TreasuryCode servsComTreas in servs.TreasuryCodes)
+                               {
+                                   rtn.getServiceProvidersResponse1[count].ServiceProviderAccount[countSer].TreasuryCodes[countSercomTrea] = new TreasuryCode();
+                                   rtn.getServiceProvidersResponse1[count].ServiceProviderAccount[countSer].TreasuryCodes[countSercomTrea].code = servsComTreas.code;
+                                   rtn.getServiceProvidersResponse1[count].ServiceProviderAccount[countSer].TreasuryCodes[countSercomTrea].description = servsComTreas.description;
+                                   countSercomTrea++;
+                               }
 
+                           }
+                       
                            countSer++;
                        }
                        
