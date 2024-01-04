@@ -1,6 +1,6 @@
-<mxfile host="app.diagrams.net" modified="2024-01-04T15:07:16.505Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36 Edg/120.0.0.0" etag="wjSalRvk5BQBLTNtNywz" version="22.1.16" type="github">
+<mxfile host="app.diagrams.net" modified="2024-01-04T15:09:44.518Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36 Edg/120.0.0.0" etag="4yEzk2bELfLGhfUc-UmE" version="22.1.16" type="github">
   <diagram name="Page-1" id="197159a0-c6a4-9194-75a8-e4174976684c">
-    <mxGraphModel dx="1489" dy="813" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1.5" pageWidth="1169" pageHeight="826" background="none" math="0" shadow="0">
+    <mxGraphModel dx="1737" dy="948" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1.5" pageWidth="1169" pageHeight="826" background="none" math="0" shadow="0">
       <root>
         <mxCell id="0" style=";html=1;" />
         <mxCell id="1" style=";html=1;" parent="0" />
@@ -61,7 +61,7 @@
         <mxCell id="1257a543d1cacc4b-15" style="rounded=0;html=1;startSize=10;endSize=10;jettySize=auto;orthogonalLoop=1;fontSize=14;endArrow=none;endFill=0;strokeColor=#808080;" parent="1" source="1257a543d1cacc4b-9" target="1257a543d1cacc4b-8" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="1257a543d1cacc4b-9" value="Http/Https Protocol&lt;br&gt;&lt;br&gt;8080/4443" style="shadow=0;dashed=0;html=1;strokeColor=none;fillColor=#4495D1;labelPosition=center;verticalLabelPosition=middle;verticalAlign=middle;shape=mxgraph.veeam.2d.cloud;fontSize=14;align=center;" parent="1" vertex="1">
+        <mxCell id="1257a543d1cacc4b-9" value="&lt;font color=&quot;#ff0000&quot;&gt;&lt;b&gt;&lt;u&gt;&lt;i&gt;Http/Https Protocol&lt;br&gt;&lt;br&gt;8080/4443&lt;/i&gt;&lt;/u&gt;&lt;/b&gt;&lt;/font&gt;" style="shadow=0;dashed=0;html=1;strokeColor=none;fillColor=#4495D1;labelPosition=center;verticalLabelPosition=middle;verticalAlign=middle;shape=mxgraph.veeam.2d.cloud;fontSize=14;align=center;" parent="1" vertex="1">
           <mxGeometry x="922" y="583" width="66" height="46" as="geometry" />
         </mxCell>
         <mxCell id="1257a543d1cacc4b-30" style="edgeStyle=elbowEdgeStyle;rounded=0;html=1;startSize=10;endSize=10;jettySize=auto;orthogonalLoop=1;fontSize=14;endArrow=none;endFill=0;strokeColor=#808080;elbow=vertical;" parent="1" source="1257a543d1cacc4b-22" target="1257a543d1cacc4b-23" edge="1">
@@ -87,10 +87,10 @@
         <mxCell id="1257a543d1cacc4b-24" value="" style="shadow=0;dashed=0;html=1;strokeColor=none;fillColor=#4495D1;labelPosition=center;verticalLabelPosition=top;verticalAlign=bottom;shape=mxgraph.veeam.2d.proxy;fontSize=14;align=center;" parent="1" vertex="1">
           <mxGeometry x="1012.0000000000002" y="690.0000000000002" width="46" height="46" as="geometry" />
         </mxCell>
-        <mxCell id="1257a543d1cacc4b-40" value="Internal Port&amp;nbsp;9092/2181" style="shadow=0;dashed=0;html=1;strokeColor=none;fillColor=#4495D1;labelPosition=right;verticalLabelPosition=middle;verticalAlign=middle;shape=mxgraph.veeam.2d.data_mover;fontSize=14;align=left;" parent="1" vertex="1">
+        <mxCell id="1257a543d1cacc4b-40" value="&lt;b&gt;&lt;font color=&quot;#ff0000&quot;&gt;&lt;i&gt;&lt;u&gt;Internal Port&amp;nbsp;9092/2181&lt;/u&gt;&lt;/i&gt;&lt;/font&gt;&lt;/b&gt;" style="shadow=0;dashed=0;html=1;strokeColor=none;fillColor=#4495D1;labelPosition=right;verticalLabelPosition=middle;verticalAlign=middle;shape=mxgraph.veeam.2d.data_mover;fontSize=14;align=left;" parent="1" vertex="1">
           <mxGeometry x="312" y="763" width="38" height="38" as="geometry" />
         </mxCell>
-        <mxCell id="1257a543d1cacc4b-42" value="Internal Port : 7002/7003&amp;nbsp;" style="shadow=0;dashed=0;html=1;strokeColor=none;fillColor=#4495D1;labelPosition=right;verticalLabelPosition=middle;verticalAlign=middle;shape=mxgraph.veeam.2d.data_mover;fontSize=14;align=left;" parent="1" vertex="1">
+        <mxCell id="1257a543d1cacc4b-42" value="&lt;b&gt;&lt;font color=&quot;#ff0000&quot;&gt;&lt;i&gt;&lt;u&gt;Internal Port : 7002/7003&amp;nbsp;&lt;/u&gt;&lt;/i&gt;&lt;/font&gt;&lt;/b&gt;" style="shadow=0;dashed=0;html=1;strokeColor=none;fillColor=#4495D1;labelPosition=right;verticalLabelPosition=middle;verticalAlign=middle;shape=mxgraph.veeam.2d.data_mover;fontSize=14;align=left;" parent="1" vertex="1">
           <mxGeometry x="1052" y="763" width="38" height="38" as="geometry" />
         </mxCell>
         <mxCell id="1FKcwBxJ14H9c4LpgwPt-5" value="" style="outlineConnect=0;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;shape=mxgraph.aws3.application_load_balancer;fillColor=#F58534;gradientColor=none;" vertex="1" parent="1">
@@ -105,7 +105,7 @@
         <mxCell id="1FKcwBxJ14H9c4LpgwPt-39" value="" style="strokeColor=#dddddd;shadow=1;strokeWidth=1;rounded=1;absoluteArcSize=1;arcSize=2;" vertex="1" parent="1">
           <mxGeometry x="898" y="236" width="182" height="44" as="geometry" />
         </mxCell>
-        <mxCell id="1FKcwBxJ14H9c4LpgwPt-40" value="&lt;font size=&quot;1&quot; style=&quot;&quot;&gt;&lt;b style=&quot;font-size: 15px;&quot;&gt;Cluster Port: 5701&lt;/b&gt;&lt;/font&gt;" style="sketch=0;dashed=0;connectable=0;html=1;fillColor=#757575;strokeColor=none;shape=mxgraph.gcp2.cluster;part=1;labelPosition=right;verticalLabelPosition=middle;align=left;verticalAlign=middle;spacingLeft=5;fontSize=12;" vertex="1" parent="1FKcwBxJ14H9c4LpgwPt-39">
+        <mxCell id="1FKcwBxJ14H9c4LpgwPt-40" value="&lt;font color=&quot;#ff0000&quot; size=&quot;1&quot; style=&quot;&quot;&gt;&lt;b style=&quot;font-size: 15px;&quot;&gt;&lt;i&gt;&lt;u&gt;Cluster Port: 5701&lt;/u&gt;&lt;/i&gt;&lt;/b&gt;&lt;/font&gt;" style="sketch=0;dashed=0;connectable=0;html=1;fillColor=#757575;strokeColor=none;shape=mxgraph.gcp2.cluster;part=1;labelPosition=right;verticalLabelPosition=middle;align=left;verticalAlign=middle;spacingLeft=5;fontSize=12;" vertex="1" parent="1FKcwBxJ14H9c4LpgwPt-39">
           <mxGeometry y="0.5" width="32" height="32" relative="1" as="geometry">
             <mxPoint x="5" y="-16" as="offset" />
           </mxGeometry>
